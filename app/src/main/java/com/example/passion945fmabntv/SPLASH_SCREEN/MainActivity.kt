@@ -1,0 +1,39 @@
+package com.example.passion945fmabntv.SPLASH_SCREEN
+
+import android.content.Context
+import android.content.Intent
+import android.media.AudioManager
+import android.media.MediaPlayer
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.view.WindowManager
+import android.widget.ImageView
+import android.widget.Toast
+import com.example.passion945fmabntv.ONBOARDING_SCREEN.ONBOARDING
+import com.example.passion945fmabntv.R
+
+
+public const val SPLASH_TIME=4000L
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val logoimage=findViewById<ImageView>(R.id.Abnlogo)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+        Handler(Looper.myLooper()!!).postDelayed(
+            {
+                val intent= Intent(this, ONBOARDING::class.java)
+                startActivity(intent)
+                finish()
+            }, SPLASH_TIME
+        )
+//        val fadeAnim=AnimationUtils.loadAnimation(this,R.anim.fade_in_animation)
+//        logoimage.animation=fadeAnim
+    }
+}
